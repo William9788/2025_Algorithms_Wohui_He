@@ -1,7 +1,6 @@
-package exercise.utils;
+package entities.utils;
 
-import entities.Book;
-
+import entities
 /**
  * Utility methods for working with {@link Book} instances.
  */
