@@ -27,6 +27,14 @@ builder.append(book.format());//to use the format in Book java from line50 to ch
 return builder.toString();//return all what it gets.
 }
 
+/*
+ * This method use for delete the book that dont want.
+ * @param books the array for use from Book java
+ * @param position to check the position of array and to delete.
+ * @throw  first to if detect null.
+ * @throw second to if decete position incorrect.
+ * @return return the book that already deleted
+ */
 public static Book emptyIndex(Book[] books,int position){
  if(books==null){
   throw new IllegalArgumentException("Book must be not null!");//if detect null throw it to the user
