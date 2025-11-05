@@ -99,19 +99,26 @@ public static int deleteAll(Book[] books,Book target){
     }
     return count;
 }
+/*
+ * This method is to target the book and replace it using Boolean.
+ * @param books the array to use with Book java
+ * @param target to target the book ,with Book java
+ * @replacement instance to replace the old one
+ * @return the numbers that were overwritten.
+ */
 public static int replace(Book[] books,Book target,Book replacement){
     if(books==null||books.length==0){
-        return 0;
+        return 0;//return 0 if null or length incorrect
     }
-    int count=0;
+    int count=0;//set a count to count how many replaced
     for(int i=0;i<books.length;i++){
-        Book current=books[i];
-        boolean match=(current==null&&target==null)||(current!=null&&current.equals(target));
+        Book current=books[i];//To take this one out and store into current.
+        boolean match=(current==null&&target==null)||(current!=null&&current.equals(target));//Boolean it to check if both of them are null otherwise no 
         if(match){
-            books[i]=replacement;
-            count++;
+            books[i]=replacement;//if match then replace it to the new one using replacement.
+            count++;//if match then one more count;
         }
     }
-    return count;
+    return count;//return how many books that replaced.
 }
 }
