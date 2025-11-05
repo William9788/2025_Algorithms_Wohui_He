@@ -1,7 +1,7 @@
 package entities.utils;
 
 import entities.Book;
-
+ 
 /**
  * Utility methods for working with {@link Book} instances.
  */
