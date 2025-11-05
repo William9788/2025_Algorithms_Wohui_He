@@ -58,20 +58,20 @@ public static Book emptyIndex(Book[] books,int position){
  * @return true if found it and deleted it .false otherwise.
  */
 public static boolean delete(Book[] books, Book target){
-    if(books==null||books.length==0){
-    return false;//if null or length incorrect output false.
-    }
-    for(int index=0;index<books.length;index++){
-        if((books[index]==null&&target==null)||(books[index]!=null&&books[index].equals(target)))//to create the requirement to check the book if exist
-        {
-            for(int i=index;i<books.length-1;i++){//if found it ,replace it 
-                books[i]=books[i+1];//for replace
-            }
-            books[books.length-1]=null;//for replace
-            return true;
-        }
-    }
-    return false;
+if(books==null||books.length==0){
+return false;//if null or length incorrect output false.
+}
+for(int index=0;index<books.length;index++){
+if((books[index]==null&&target==null)||(books[index]!=null&&books[index].equals(target)))//to create the requirement to check the book if exist
+{
+for(int i=index;i<books.length-1;i++){//if found it ,replace it 
+books[i]=books[i+1];//for replace
+}
+books[books.length-1]=null;//for replace
+return true;
+}
+}
+return false;
 }
 /* This method is to delete the books if target and show how many books deleted.
  * @param books the array for use from Book java
@@ -79,25 +79,25 @@ public static boolean delete(Book[] books, Book target){
  * @return 0 if null or length incorrect,return the slot  if match.
  */
 public static int deleteAll(Book[] books,Book target){
-    if(books==null||books.length==0){//
-        return 0;//return 0 if null or length incorrect
-    }
-    int index=0;//set a index to track ifdont need to delete.
-    int count=0;//set a count to count how many books deleted.
-    for(int indexx=0;indexx<books.length;indexx++){
-        Book current =books[indexx];
-        boolean match=(current==null&&target==null)||(current!=null&&current.equals(target));
-        if(match){
-            count++;//if match then count+;
-        }
-        else{
-            books[index++]=current;//to put this book into next space then to the next book.
-        }
-    }
-    while(index<books.length){
-        books[index++]=null;//to set null which is blank.
-    }
-    return count;
+if(books==null||books.length==0){//
+return 0;//return 0 if null or length incorrect
+}
+int index=0;//set a index to track ifdont need to delete.
+int count=0;//set a count to count how many books deleted.
+for(int indexx=0;indexx<books.length;indexx++){
+Book current =books[indexx];
+boolean match=(current==null&&target==null)||(current!=null&&current.equals(target));
+if(match){
+count++;//if match then count+;
+}
+else{
+books[index++]=current;//to put this book into next space then to the next book.
+}
+}
+while(index<books.length){
+books[index++]=null;//to set null which is blank.
+}
+return count;
 }
 /*
  * This method is to target the book and replace it using Boolean.
@@ -107,18 +107,51 @@ public static int deleteAll(Book[] books,Book target){
  * @return the numbers that were overwritten.
  */
 public static int replace(Book[] books,Book target,Book replacement){
-    if(books==null||books.length==0){
-        return 0;//return 0 if null or length incorrect
-    }
-    int count=0;//set a count to count how many replaced
-    for(int i=0;i<books.length;i++){
-        Book current=books[i];//To take this one out and store into current.
-        boolean match=(current==null&&target==null)||(current!=null&&current.equals(target));//Boolean it to check if both of them are null otherwise no 
-        if(match){
-            books[i]=replacement;//if match then replace it to the new one using replacement.
-            count++;//if match then one more count;
-        }
-    }
-    return count;//return how many books that replaced.
+if(books==null||books.length==0){
+return 0;//return 0 if null or length incorrect
+}
+int count=0;//set a count to count how many replaced
+for(int i=0;i<books.length;i++){
+Book current=books[i];//To take this one out and store into current.
+boolean match=(current==null&&target==null)||(current!=null&&current.equals(target));//Boolean it to check if both of them are null otherwise no 
+if(match){
+books[i]=replacement;//if match then replace it to the new one using replacement.
+count++;//if match then one more count;
+}
+}
+return count;//return how many books that replaced.
+}
+/*
+ * This method is to insert a new book into the array.
+ * @param books the array for use ,with Book java
+ * @param book the book that nedds to be inserted.
+ * @return to show  the book on which is deleted.
+ */
+public static Book sortedInsert(Book[] books, Book book){
+if(books==null||books.length==0||book==null){
+return null;//to check if its null or length incorrect then return null.
+}
+int index=-1;//to set a position which is illegal at first then if find a proper insert point then change it .
+for(int i =0;i<books.length;i++){
+Book current=books[i];//take this book out and store into current.
+if(current==null){
+index=i;
+break;
+}//return null if null;
+if(book.compareTo(current)<0){//so state  that it should be before current
+index=i;//if found then set index to i .
+break;
+}
+}
+if(index==-1){
+return null;
+}//if not found that means index==-1 then return null straghtly.
+Book delete=books[books.length-1];//to match the question that use delete to store books[books.length-1],then return delete at last.
+for(int a= books.length-1;a>index;a--){
+books[a]=books[a-1];//to move  which the elements on the right. copy the element to the next one
+
+}
+books[index]=book;//to put the new book into the array
+return delete;//return the book which is out the array to the user.
 }
 }
