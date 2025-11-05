@@ -50,7 +50,27 @@ public static Book emptyIndex(Book[] books,int position){
  }
  books[books.length-1]=null;//then delete the same books  into null.
  return removed;//let user know which book removed.
-
-
+}
+/*
+ * This method is to delete a book using boolean.
+ * @param books the array for use from BOOK JAVA
+ * @param target  target the book that needs to be removed.
+ * @return true if found it and deleted it .false otherwise.
+ */
+public static boolean delete(Book[] books, Book target){
+    if(books==null||books.length==0){
+    return false;//if null or length incorrect output false.
+    }
+    for(int index=0;index<books.length;index++){
+        if((books[index]==null&&target==null)||(books[index]!=null&&books[index].equals(target)))//to create the requirement to check the book if exist
+        {
+            for(int i=index;i<books.length-1;i++){//if found it ,replace it 
+                books[i]=books[i+1];//for replace
+            }
+            books[books.length-1]=null;//for replace
+            return true;
+        }
+    }
+    return false;
 }
 }
