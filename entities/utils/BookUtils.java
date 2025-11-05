@@ -73,4 +73,25 @@ public static boolean delete(Book[] books, Book target){
     }
     return false;
 }
+public static int deleteAll(Book[] books,Book target){
+    if(books==null||books.length==0){
+        return 0;
+    }
+    int index=0;
+    int count=0;
+    for(int indexx=0;indexx<books.length;indexx++){
+        Book current =books[indexx];
+        boolean match=(current==null&&target==null)||(current!=null&&current.equals(target));
+        if(match){
+            count++;
+        }
+        else{
+            books[index++]=current;
+        }
+    }
+    while(index<books.length){
+        books[index++]=null;
+    }
+    return count;
+}
 }
