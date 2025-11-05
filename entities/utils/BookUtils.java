@@ -99,4 +99,19 @@ public static int deleteAll(Book[] books,Book target){
     }
     return count;
 }
+public static int replace(Book[] books,Book target,Book replacement){
+    if(books==null||books.length==0){
+        return 0;
+    }
+    int count=0;
+    for(int i=0;i<books.length;i++){
+        Book current=books[i];
+        boolean match=(current==null&&target==null)||(current!=null&&current.equals(target));
+        if(match){
+            books[i]=replacement;
+            count++;
+        }
+    }
+    return count;
+}
 }
