@@ -73,24 +73,29 @@ public static boolean delete(Book[] books, Book target){
     }
     return false;
 }
+/* This method is to delete the books if target and show how many books deleted.
+ * @param books the array for use from Book java
+ * @param target target the books,from Book java
+ * @return 0 if null or length incorrect,return the slot  if match.
+ */
 public static int deleteAll(Book[] books,Book target){
-    if(books==null||books.length==0){
-        return 0;
+    if(books==null||books.length==0){//
+        return 0;//return 0 if null or length incorrect
     }
-    int index=0;
-    int count=0;
+    int index=0;//set a index to track ifdont need to delete.
+    int count=0;//set a count to count how many books deleted.
     for(int indexx=0;indexx<books.length;indexx++){
         Book current =books[indexx];
         boolean match=(current==null&&target==null)||(current!=null&&current.equals(target));
         if(match){
-            count++;
+            count++;//if match then count+;
         }
         else{
-            books[index++]=current;
+            books[index++]=current;//to put this book into next space then to the next book.
         }
     }
     while(index<books.length){
-        books[index++]=null;
+        books[index++]=null;//to set null which is blank.
     }
     return count;
 }
